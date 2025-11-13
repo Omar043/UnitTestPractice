@@ -1,10 +1,12 @@
 #include "Password.h"
+#include <vector>
 #include <string>
 #include <cctype>
+#include <bits/stdc++.h>
 
 
 using std::string;
-
+using namespace std;
 /*
   The function receives a string counts how many times the same character 
   occurs at the beginning of the string, before any other characters (or the
@@ -39,4 +41,17 @@ bool Password::has_mixed_case(string str)
     }
   }
   return false;
+}
+
+unsigned int Password::unique_characters(string aString)
+{
+  vector<int> uniqueCharacters;
+
+  for(int i = 0; i < aString.size(); i++){
+    int asciiVal = int(aString[i]);
+    if(find(uniqueCharacters.begin(), uniqueCharacters.end(), asciiVal) == uniqueCharacters.end()){
+      uniqueCharacters.push_back(asciiVal);
+    }
+  }
+  return (uniqueCharacters.size());
 }

@@ -72,3 +72,23 @@ TEST(PasswordTest, mult_single_one_upper){
 	Password my_password;
 	ASSERT_TRUE(my_password.has_mixed_case("aAAAA"));
 };
+
+TEST(PasswordTest, unique_char_no_character){
+	Password my_password;
+	ASSERT_EQ(0, my_password.unique_characters(""));
+}
+
+TEST(PasswordTest, unique_char_single_char){
+	Password my_password;
+	ASSERT_EQ(1, my_password.unique_characters("A"));
+}
+
+TEST(PasswordTest, unique_char_four_characters){
+	Password my_password;
+	ASSERT_EQ(2, my_password.unique_characters("aaAA"));
+}
+
+TEST(PasswordTest, unique_char_four_symbols){
+	Password my_password;
+	ASSERT_EQ(3, my_password.unique_characters("&$AA&$"));
+}
