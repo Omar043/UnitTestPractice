@@ -46,7 +46,7 @@ bool Password::has_mixed_case(string str)
 unsigned int Password::unique_characters(string aString)
 {
   vector<int> uniqueCharacters;
-
+  
   for(int i = 0; i < aString.size(); i++){
     int asciiVal = int(aString[i]);
     if(find(uniqueCharacters.begin(), uniqueCharacters.end(), asciiVal) == uniqueCharacters.end()){

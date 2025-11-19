@@ -21,6 +21,27 @@ TEST(PasswordTest, single_letter_password)
 	ASSERT_EQ(1, actual);
 };
 
+TEST(PasswordTest, mult_letter_password)
+{
+	Password my_password;
+	int actual = my_password.count_leading_characters("ZX");
+	ASSERT_EQ(1, actual);
+};
+
+TEST(PasswordTest, empty_password)
+{
+	Password my_password;
+	int actual = my_password.count_leading_characters("");
+	ASSERT_EQ(1, actual);
+};
+
+TEST(PasswordTest, real_leading_characters)
+{
+	Password my_password;
+	int actual = my_password.count_leading_characters("ZZZz");
+	ASSERT_EQ(1, actual);
+};
+
 TEST(PasswordTest, blank_char)
 {
 	Password my_password;
@@ -63,19 +84,30 @@ TEST(PasswordTest, single_num_single_char){
 	ASSERT_TRUE(my_password.has_mixed_case("aA"));
 };
 
-TEST(PasswordTest, mult_upper_one_single){
+TEST(PasswordTest, mult_upper_one_single_qw6){
 	Password my_password;
 	ASSERT_TRUE(my_password.has_mixed_case("AAAAa"));
 };
+
+TEST(PasswordTest, mult_upper_one_single_wq5){
+	Password my_password;
+	ASSERT_TRUE(my_password.has_mixed_case("AAAA[]{}"));
+};
+
 
 TEST(PasswordTest, mult_single_one_upper){
 	Password my_password;
 	ASSERT_TRUE(my_password.has_mixed_case("aAAAA"));
 };
 
-TEST(PasswordTest, unique_char_no_character){
+TEST(PasswordTest, unique_char_no_character_qw5){
 	Password my_password;
 	ASSERT_EQ(0, my_password.unique_characters(""));
+}
+
+TEST(PasswordTest, unique_char_no_character_qwe){
+	Password my_password;
+	ASSERT_EQ(0, my_password.unique_characters("😃"));
 }
 
 TEST(PasswordTest, unique_char_single_char){
